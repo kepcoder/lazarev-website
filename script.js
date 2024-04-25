@@ -1,11 +1,13 @@
 // import Scrollbar from 'smooth-scrollbar'
 
-
 // Scrollbar.init(document.querySelector("#body"))
 
-function select(elem){
-    return   document.querySelector(elem)
-}
+(function () {
+    const scroll = new LocomotiveScroll({
+        el: document.querySelector('[data-slow-as-fuck-scroller]'),
+        smooth: true
+    });
+})();
 
 function select(elem) {
 	return document.querySelector(elem);
