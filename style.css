@@ -20,6 +20,34 @@ align-items: center;
 justify-content: space-between;
 position:fixed;
 }
+
+/* 
+    Never, ever use font-size vw, vh, etc. for font-size.
+
+    Lack of Consistency: 
+        Using vw (viewport width) and vh (viewport height) units for font size can 
+        lead to inconsistent text sizes across different devices and screen orientations, 
+        impacting readability and design consistency. (It's real bad on mobile)
+
+    Limited Control: 
+        Font sizes specified in vw and vh can become disproportionately large or small 
+        depending on the screen size, making it challenging to fine-tune typography for 
+        optimal viewing on various devices.
+
+    Use rem or em instead. They are relative to the root font-size, which is usually set to 16px.
+    html {
+        font-size: 16px;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    ..
+    p { font-size: 1rem; }
+
+    Using em and rem units for font sizes is preferred because they offer scalability relative to parent or root elements, 
+    ensuring responsive design and accessibility. They provide consistency across layouts, adapt well to design changes, 
+    and allow users to adjust font sizes for better readability without compromising the overall webpage layout.
+
+*/
 nav .logo{
     font-size:1.2vw;
 }
@@ -851,4 +879,41 @@ transform:translateX(0)
 .page11{
     width:100%;
     height:60vh;
+}
+
+.col-md-6 {
+    width: 50%!important;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+@media screen and (max-width: 768px){
+    /*  
+        Read about: https://getbootstrap.com/docs/4.0/layout/grid/ 
+        It's easier to maintain/ use a grid system than to write media queries for every screen size.
+    */
+    .col-md-6 {
+        width: 100%!important;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    /* 
+        These ain't pages, they're sections.
+        Also you will never remember what page 1, page 2, page 3, etc. are.
+        So, it's better to name them according to their content.
+        section.about-us, section.services, section.contact-us, etc.
+    */
+    .page4,
+    .page4-left {
+        height: auto;
+    }
+    .page4-left {
+        padding: 5vh 10vw 0;
+    }
 }
